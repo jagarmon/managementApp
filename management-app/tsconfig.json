@@ -17,6 +17,7 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
+  "exclude": ["globals.d.tsx"],
   "files":[
     "./globals.d.tsx"
   ]
