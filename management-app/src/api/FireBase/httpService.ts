@@ -1,4 +1,4 @@
-import { firestore } from 'api/fireBase/fireBaseConfig';
+import { FireStore } from './fireBaseVariables';
 import { DocumentData, WithFieldValue, addDoc, collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
 
 
@@ -12,7 +12,7 @@ class HttpService{
     }
 
     public async get<T>(tableName: string, id: string): Promise<T>{
-        const docRef = doc(firestore, tableName, id);
+        const docRef = doc(FireStore, tableName, id);
         const result = await getDoc(docRef); 
         const resObj = {id: id, ...result.data()} 
         if(result.exists())  
@@ -24,7 +24,7 @@ class HttpService{
 
     public async getAll<T>(tableName: string): Promise<T[]>{
         try{
-        const resultList = await getDocs(collection(firestore, tableName));
+        const resultList = await getDocs(collection(FireStore, tableName));
         const mappedData = resultList.docs.map(element => ({id: element.id, ...element.data()}) as T)
         return mappedData;
         }catch(error){
@@ -35,7 +35,7 @@ class HttpService{
     }
 
     public async post<T extends WithFieldValue<DocumentData>>(tableName: string, object: T){
-        const ref = collection(firestore, tableName); 
+        const ref = collection(FireStore, tableName); 
         delete object.id;
         try{
            return await addDoc(ref, object);
@@ -45,7 +45,7 @@ class HttpService{
        }
 
        public async update<T extends WithFieldValue<DocumentData>>(tableName: string, object: T){
-        const docRef = doc(firestore, tableName, object.id);
+        const docRef = doc(FireStore, tableName, object.id);
         delete object.id;
         try{
            await updateDoc(docRef, object);

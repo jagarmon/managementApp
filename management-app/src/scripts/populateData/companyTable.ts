@@ -23,5 +23,5 @@ derechos digitales (LOPD-GDD) del 5 de diciembre de 218, le informamos de que lo
 en un fichero bajo responsabilidad de ${basicData.companyName} con la finalidad de cumplire con los compromisos entre ambos, pudiendo rectificar, 
 u oponer sus datos personales en ${basicData.streetName}, de ${basicData.city} (${basicData.province})`
 }
-httpService.post<Company>('Companies', companyObject)
+httpService.post<Company>('CompanyProfile', companyObject)
 
