@@ -1,4 +1,4 @@
-import { firestore } from 'api/FireBase/firebaseConfig';
+import { firestore } from 'api/fireBase/fireBaseConfig';
 import { DocumentData, WithFieldValue, addDoc, collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
 
 
